@@ -1,7 +1,8 @@
 import "reflect-metadata";
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
-import { router as createRoute} from "./routers/create"
+import { router as createRoute } from "./routers/create"
+import { router as authenticateRoute} from "./routers/authenticate"
 
 import "./db";
 
@@ -10,8 +11,7 @@ const app = express()
 app.use(express.json())
 
 app.use(createRoute)
-//app.use('/users', require('./routers/createUser'));
-
+app.use(authenticateRoute)
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
