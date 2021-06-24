@@ -5,11 +5,12 @@ interface IUserRequest {
   name: string;
   email: string;
   admin?: boolean;
+  password: string;
 }
 
 class createUser {
 
-  async execute ({ name, email, admin }) {
+  async execute ({ name, email, admin, password }) {
     const usersRepository = getCustomRepository(UserRepositories)
 
     if (!email) {
@@ -27,7 +28,8 @@ class createUser {
     const user = usersRepository.create({
       name,
       email,
-      admin
+      admin,
+      password
     })
 
     await usersRepository.save(user)
