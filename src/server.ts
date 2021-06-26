@@ -3,6 +3,7 @@ import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
 import { router as createRoute } from "./routers/create"
 import { router as authenticateRoute} from "./routers/authenticate"
+import { router as getRoute } from "./routers/get"
 
 import "./db";
 
@@ -12,6 +13,7 @@ app.use(express.json())
 
 app.use(createRoute)
 app.use(authenticateRoute)
+app.use(getRoute)
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
