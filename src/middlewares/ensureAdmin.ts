@@ -15,8 +15,7 @@ export async function ensureAdmin(request: Request, response: Response, next: Ne
     return next()
   }
 
-  //TODO trocar para autenticado mas não autorizado
-  return response.status(401).json({
-    error: "Unauthorized"
+  return response.status(403).json({
+    error: " Unauthorized. You don't have acess to this feature."
   })
 }
