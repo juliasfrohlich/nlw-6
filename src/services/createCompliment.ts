@@ -18,7 +18,7 @@ class createCompliment {
     if (user_sender === user_receiver) {
       throw new Error("Incorrect User Receiver.")
     }
-
+    
     const userReceiverExists = await usersRepositories.findOne(user_receiver)
 
     if (!userReceiverExists) {
@@ -31,6 +31,7 @@ class createCompliment {
       user_receiver,
       message
     })
+
 
     await complimentRepositories.save(compliment)
 
